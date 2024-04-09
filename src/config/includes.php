@@ -1,17 +1,17 @@
 <?php
 
 // INCLUDE ENVIRONMENT CONSTANTS
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/config/env.php";
+include_once __DIR__ . "/env.php";
 
 // INCLUDE HELPER FUNCTIONS
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/db-connection.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/router.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/remove-extra-spaces.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/generate-password.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/validation.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/create-user.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/get-users.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/update-user.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/delete-user.php";
+include_once  __DIR__ . "/../helpers/db-connection.php";
+include_once __DIR__ . "/../helpers/router.php";
+include_once __DIR__ . "/../helpers/remove-extra-spaces.php";
+include_once __DIR__ . "/../helpers/generate-password.php";
+include_once __DIR__ . "/../helpers/validation.php";
+include_once __DIR__ . "/../helpers/create-user.php";
+include_once __DIR__ . "/../helpers/get-users.php";
+include_once __DIR__ . "/../helpers/update-user.php";
+include_once __DIR__ . "/../helpers/delete-user.php";
 
 

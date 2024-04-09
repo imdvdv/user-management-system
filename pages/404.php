@@ -1,6 +1,6 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/config/env.php";
+include_once __DIR__ . "/../src/config/env.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +24,6 @@ include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/config/env.php";
             <a href="/" class="redirect__link">Home</a>
         </div>
     </div>
-<?php include_once "{$_SERVER["DOCUMENT_ROOT"]}/components/scripts.html";?>
+<?php include_once __DIR__ . "/../components/scripts.html";?>
 </body>
 </html>

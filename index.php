@@ -1,6 +1,6 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/config/includes.php";
+include_once __DIR__ . "/src/config/includes.php";
 
 // Home page
 setRoute("/", function () {
