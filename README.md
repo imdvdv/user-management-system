@@ -57,4 +57,9 @@ To use this project, follow these steps:
 
 4. Run the project on a server.
 
+### Images
 
+![Admin panel1](https://github.com/imdvdv/user-management-system/blob/main/assets/img/panel1.png)
+![Admin panel2](https://github.com/imdvdv/user-management-system/blob/main/assets/img/panel2.png)
+![Edit user popup](https://github.com/imdvdv/user-management-system/blob/main/assets/img/edit-popup.png)
+![Delete user popup](https://github.com/imdvdv/user-management-system/blob/main/assets/img/delete-popup.png)
