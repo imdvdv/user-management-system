@@ -6,7 +6,7 @@ include_once __DIR__ . "/src/config/includes.php";
 setRoute("/", function () {
     $method = $_SERVER["REQUEST_METHOD"];
     if ($method === "GET"){
-        include_once "{$_SERVER["DOCUMENT_ROOT"]}/pages/admin-panel.php";
+        include_once __DIR__ . "/pages/admin-panel.php";
     } else{
         header("HTTP/1.1 405 Method Not Allowed");
         exit;
@@ -81,7 +81,7 @@ setRoute("/users", function () {
 // Not Found
 setRoute("/404", function () {
     http_response_code(404);
-    include_once "{$_SERVER["DOCUMENT_ROOT"]}/pages/404.php";
+    include_once __DIR__ . "/pages/404.php";
 });
 
 routing();
