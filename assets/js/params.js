@@ -111,13 +111,13 @@ export const popupParams = {
                     nameValue = inputName.value;
                     emailValue = inputEmail.value;
 
-                    let bodyData = new URLSearchParams();
-                    bodyData.append("name", nameValue);
-                    bodyData.append("email", emailValue);
-
+                    let bodyData = {
+                        name: nameValue,
+                        email: emailValue
+                    };
                     let options = {
                         method: "PATCH",
-                        body: bodyData,
+                        body: JSON.stringify(bodyData),
                     };
 
                     if (await serverRequest(`/users/${userID}`, options)){

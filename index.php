@@ -61,20 +61,20 @@ setRoute("/users", function () {
             if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
 
                 $userID = $_GET["id"];
-                parse_str(file_get_contents("php://input"), $_PATCH);
+                $inputData = json_decode(file_get_contents("php://input"));
 
-                if (isset($_PATCH["name"], $_PATCH["email"])) {
+                if (isset($inputData->name, $inputData->email)) {
 
                     $inputs = [
-                        "name" => trim(removeExtraSpaces($_PATCH["name"])),
-                        "email" => trim($_PATCH["email"]),
+                        "name" => trim(removeExtraSpaces($inputData->name)),
+                        "email" => trim($inputData->email),
                     ];
                     echo json_encode(updateUser($userID, $inputs)); // update user data in the database
 
                 } else {
                     header("HTTP/1.1 400 Bad Request");
                 }
-                
+
             } else {
                 header("HTTP/1.1 400 Bad Request");
             }
