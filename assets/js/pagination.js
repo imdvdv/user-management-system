@@ -14,7 +14,7 @@ export function paginate (table, data, params, activePage = 1) {
         pagination.innerHTML = "";
         table.classList.remove("hide");
         pagination.classList.remove("hide");
-        container.style.minHeight = "750px";
+        container.style.minHeight = "850px";
 
         (function fillTable() {
             let startTrim = (activePage - 1) * params.rowsLimit;
