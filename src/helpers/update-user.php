@@ -3,7 +3,15 @@
 // The function for updating user data on the profile page
 function updateUser (int $userID, array $inputs): array {
 
-    // Prepare a preliminary negative response in case of errors
+    // Check user exists
+    $result = getUsers($userID);
+    if (isset($result["status"]) && $result["status"] === false){
+
+        // Return a negative response
+        return $result;
+    }
+
+    // Prepare a preliminary negative response in case errors
     $statusCode = 400;
     $responseData = [
         "status" => false,
