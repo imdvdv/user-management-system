@@ -3,10 +3,10 @@
 function createUser (array $inputs): array {
 
     // Prepare a preliminary negative response in case of errors
-    $statusCode = "HTTP/1.1 400 Bad Request";
+    $statusCode = 400;
     $responseData = [
         "status" => false,
-        ];
+    ];
     $responseData = validateFields($inputs, $responseData);  // updating the response in case of validation errors
 
     if (!isset($responseData["errors"]["email"])) {
@@ -32,13 +32,13 @@ function createUser (array $inputs): array {
             executeQuery($pdo, $query, $values);
 
             // Prepare a positive response
-            $statusCode = "HTTP/1.1 201 Created";
+            $statusCode = 201;
             $responseData = [
                 "status" => true,
                 "message" => "User has been created",
             ];
         }
     }
-    header($statusCode);
+    http_response_code($statusCode);
     return $responseData;
 }

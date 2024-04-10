@@ -4,7 +4,7 @@
 function updateUser (int $userID, array $inputs): array {
 
     // Prepare a preliminary negative response in case of errors
-    $statusCode = "HTTP/1.1 400 Bad Request";
+    $statusCode = 400;
     $responseData = [
         "status" => false,
     ];
@@ -19,12 +19,12 @@ function updateUser (int $userID, array $inputs): array {
        executeQuery($pdo, $query, $values);
 
        // Prepare a positive response
-       $statusCode = "HTTP/1.1 200 OK";
+       $statusCode = 200;
        $responseData = [
            "status" => true,
            "message" => "User (ID-$userID) was updated",
        ];
    }
-   header($statusCode);
+   http_response_code($statusCode);
    return $responseData;
 }

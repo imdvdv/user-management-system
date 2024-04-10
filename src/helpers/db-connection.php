@@ -7,7 +7,7 @@ function getPDO ():PDO {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     } catch(PDOException $e){
-        header("HTTP/1.1 500 Internal Server Error");
+        http_response_code(500);
         die("Connection failed : ". $e->getMessage());
     }
 }
@@ -18,7 +18,7 @@ function executeQuery (PDO $pdo, string $query, array $values = null):PDOStateme
         $values ? $stmt->execute($values) : $stmt->execute();
         return $stmt;
     } catch(PDOException $e){
-        header("HTTP/1.1 500 Internal Server Error");
+        http_response_code(500);
         die("Connection failed : ". $e->getMessage());
     }
 }
