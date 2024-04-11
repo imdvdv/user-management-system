@@ -1,31 +1,31 @@
 import {serverRequest} from "./server-request.js";
 
 export async function searchUser (value) {
-    let users = await serverRequest("/users", {method: "GET"});
-    let result = [];
+    
+    let result = [],
+    nameRegex = /^([a-z\s]|[а-яё\s])+$/,
+    emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-    if (users){
-        if (value.match(/^[\d.]/)) {
-            users.forEach((user) => {
-                if (parseInt(value) === user.id){
-                    result.push(user);
-                }
-            });
+    // Search by id
+    if (value.match(/^[\d.]/)) {
 
-        } else if (value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
-            users.forEach((user) => {
-                if (user.email === value.toLowerCase()){
-                    result.push(user);
-                }
-            });
+        let response = await serverRequest(`/users/${value}`, {method: "GET"});
+        if (typeof response.status === "undefined" && typeof response.id === "number"){
+            result.push(response);
+        }
 
-        } else if (value.match(/^([a-z\s]|[а-яё\s])+$/)) {
-            users.forEach((user) => {
-                if (user.name.toLowerCase().includes(value)) {
+    // Search by name and email
+    } else if (value.match(emailRegex) || value.match(nameRegex)) {
+
+        let response = await serverRequest("/users", {method: "GET"});
+        if (Array.isArray(response) && response.length > 0) {
+            response.forEach((user) => {
+                if (typeof user.email !== "undefined" && user.email === value || typeof user.name !== "undefined" && user.name.toLowerCase().includes(value)){
                     result.push(user);
                 }
             });
         }
+
     }
     return result;
 }
