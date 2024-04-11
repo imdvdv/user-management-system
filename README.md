@@ -12,7 +12,8 @@ The main goal of the project is to learn how to implement such functionality and
 * __Read:__ Ability to display user data from the database on a page in an intuitive table.
 * __Update:__ Ability to edit user data.
 * __Delete:__ Ability to remove a user from the database.
-* __Routing:__ Custom routing implemented using a functional approach using PHP
+* __Friendly URLs:__ .htaccess file provides simple and short URLs, sparing the project from file names in the address bar.
+* __Routing:__ Custom routing implemented using a functional approach using PHP.
 * __Search:__ Custom search bar allows you to find a user by ID email address or name and display it in a table.
 * __Pagination:__ Custom pagination implemented in Javascript that allows you to fill a table with data and split it into pages.
 * __Validation:__ Custom validation of input data before sending using JavaScript and additional validation on the server side. In case of errors, error messages are displayed each under its own field.
