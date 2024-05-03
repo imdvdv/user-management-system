@@ -43,9 +43,9 @@ To use this project, follow these steps:
 2. Create a new database and import the database.sql file.
 3. Configure Database.
 
-   3.1 Create a new database with name `ums` and import the prepared dump file `src/config/ums.sql`.
+   3.1 Create a new database with name `ums` and import the prepared dump file `config/ums.sql`.
    
-   3.2 Edit the database connection details in the `src/config/env.php` file.
+   3.2 Edit the database connection details in the `config/env.php` file.
 
    ```php
     // Database params
