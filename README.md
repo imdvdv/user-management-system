@@ -60,7 +60,7 @@ To use this project, follow these steps:
 
 ### Images
 
-![Admin panel1](https://github.com/imdvdv/user-management-system/blob/main/puplic/assets/img/panel1.png)
-![Admin panel2](https://github.com/imdvdv/user-management-system/blob/main/puplic/assets/img/panel2.png)
-![Edit user popup](https://github.com/imdvdv/user-management-system/blob/main/puplic/assets/img/edit-popup.png)
-![Delete user popup](https://github.com/imdvdv/user-management-system/blob/main/puplic/assets/img/delete-popup.png)
+![Admin panel1](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/panel1.png)
+![Admin panel2](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/panel2.png)
+![Edit user popup](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/edit-popup.png)
+![Delete user popup](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/delete-popup.png)
