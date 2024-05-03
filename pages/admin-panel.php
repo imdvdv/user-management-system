@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php require_once __DIR__ . "/components/head.html";?>
+<?php require_once __DIR__ . "/../public/components/head.html";?>
 <body>
 <div class="container container_users">
     <div class="top-panel">
@@ -26,7 +26,7 @@
     <div class="pagination">
     </div>
 </div>
-<?php include_once __DIR__ . "/components/popup/popup-layout.html";?>
-<?php include_once __DIR__ . "/components/scripts.html";?>
+<?php include_once __DIR__ . "/../public/components/popup/popup-layout.html";?>
+<?php include_once __DIR__ . "/../public/components/scripts.html";?>
 </body>
 </html>
