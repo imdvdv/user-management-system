@@ -1,7 +1,8 @@
 <?php
 
 $routes = [];
-$query = isset($_GET["endpoint"]) ? "/" . $_GET["endpoint"] : "/";
+$urlParts =  getUrlParts();
+$endpoint = $urlParts[0];
 
 function setRoute(string $path, callable $callback):void {
     global $routes;
@@ -9,10 +10,10 @@ function setRoute(string $path, callable $callback):void {
 }
 
 function routing(): void {
-    global $routes, $query;
+    global $routes, $endpoint;
     $found = false;
     foreach ($routes as $path => $callback) {
-        if ($path == $query) {
+        if ($path == "/{$endpoint}") {
             $found = true;
             $callback();
         }

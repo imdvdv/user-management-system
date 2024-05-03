@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__ . "/src/config/includes.php";
+include_once __DIR__ . "/../src/config/includes.php";
 
 // Home page
 setRoute("/", function () {
@@ -9,7 +9,7 @@ setRoute("/", function () {
     if ($method === "GET"){
 
         header("Content-type: text/html; charset=UTF-8");
-        include_once __DIR__ . "/pages/admin-panel.php";
+        include_once __DIR__ . "/../pages/admin-panel.php";
 
     } else{
 
@@ -45,9 +45,10 @@ setRoute("/users", function () {
         // READ OPERATION
         case "GET":
 
-            if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
+            $urlParts = getUrlParts();
+            if (isset($urlParts[1]) && is_numeric($urlParts[1])) {
 
-                $userID = $_GET["id"];
+                $userID = $urlParts[1];
                 echo json_encode(getUsers($userID)); // get one user from the database
 
             } else {
@@ -58,9 +59,10 @@ setRoute("/users", function () {
         // UPDATE OPERATION
         case "PATCH":
 
-            if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
+            $urlParts = getUrlParts();
+            if (isset($urlParts[1]) && is_numeric($urlParts[1])) {
 
-                $userID = $_GET["id"];
+                $userID = $urlParts[1];
                 $inputData = json_decode(file_get_contents("php://input"));
 
                 if (isset($inputData->name, $inputData->email)) {
@@ -83,9 +85,10 @@ setRoute("/users", function () {
         // DELETE OPERATION
         case "DELETE":
 
-            if (isset($_GET["id"]) && is_numeric($_GET["id"])) {
+            $urlParts = getUrlParts();
+            if (isset($urlParts[1]) && is_numeric($urlParts[1])) {
 
-                $userID = $_GET["id"];
+                $userID = $urlParts[1];
                 echo json_encode(deleteUser($userID)); // delete user from the database
 
             } else {
@@ -105,7 +108,7 @@ setRoute("/404", function () {
 
     http_response_code(404);
     header("Content-type: text/html; charset=UTF-8");
-    include_once __DIR__ . "/pages/404.php";
+    include_once __DIR__ . "/../pages/404.php";
 
 });
 
