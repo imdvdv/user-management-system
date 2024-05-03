@@ -5,6 +5,7 @@ include_once __DIR__ . "/env.php";
 
 // INCLUDE HELPER FUNCTIONS
 include_once  __DIR__ . "/../helpers/db-connection.php";
+include_once __DIR__ . "/../helpers/get-url-parts.php";
 include_once __DIR__ . "/../helpers/router.php";
 include_once __DIR__ . "/../helpers/remove-extra-spaces.php";
 include_once __DIR__ . "/../helpers/generate-password.php";
