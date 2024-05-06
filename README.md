@@ -49,11 +49,13 @@ To use this project, follow these steps:
 
    ```php
     // Database params
-   const DB_HOST = "your DB Host", // "localhost" for local server
+   const DB_HOST = "your DB Host", 
        DB_NAME = "your DB Name", // "ums" if you decide to use the database dump attached to the project
-       DB_USERNAME = "your DB UserName", // "root" for phpMyAdmin
-       DB_PASSWORD = "your DB Password", // "password" or without password for phpMyAdmin
-       DB_PORT = "your DB Port"; // usually 3306
+       DB_USERNAME = "your DB UserName", 
+       DB_PASSWORD = "your DB Password", 
+       DB_PORT = "your DB Port", // usually 3306
+       DB_CHARSET = "utf8",
+       DB_OPTIONS = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];
    ```
 
 4. Run the project on a server.
