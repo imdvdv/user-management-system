@@ -14,5 +14,6 @@ include_once __DIR__ . "/../src/helpers/create-user.php";
 include_once __DIR__ . "/../src/helpers/get-users.php";
 include_once __DIR__ . "/../src/helpers/update-user.php";
 include_once __DIR__ . "/../src/helpers/delete-user.php";
+include_once __DIR__ . "/../src/helpers/open-error-page.php";
 
 
