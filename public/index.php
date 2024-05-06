@@ -106,9 +106,7 @@ setRoute("/users", function () {
 // Not Found
 setRoute("/404", function () {
 
-    http_response_code(404);
-    header("Content-type: text/html; charset=UTF-8");
-    include_once __DIR__ . "/../pages/404.php";
+    openErrorPage();
 
 });
 
