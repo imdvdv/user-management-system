@@ -1,34 +1,39 @@
 <?php
 
-function createUser (array $inputs): array {
+function createUser (array|object $inputData): array {
 
     // Prepare a preliminary negative response in case of errors
     $statusCode = 400;
     $responseData = [
         "status" => false,
     ];
-    $responseData = validateFields($inputs, $responseData);  // updating the response in case of validation errors
 
-    if (!isset($responseData["errors"]["email"])) {
+    // Validation fields
+    $fieldsData = validateFields($inputData); // the function returns array includes prepared values and array of errors
+    $responseData["errors"] = $fieldsData["errors"];
+
+    if (isset($fieldsData["email"]) && !isset($fieldsData["errors"]["email"])) {
 
         // Check the email exists in the database
         $pdo = getPDO();
         $query = "SELECT email FROM users WHERE email = ? LIMIT 1";
-        $values = [$inputs["email"]];
+        $values = [$fieldsData["email"]];
         $stmt = executeQuery($pdo, $query, $values);
 
         if ($stmt->rowCount() > 0) {
+
             $responseData["errors"]["email"] = "this email already exists";
-        } else {
+
+        } elseif (empty($responseData["errors"]) && isset($fieldsData["name"])) {
 
             // Generate random password for a new user
             $password = generatePassword();
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
             // Write user data to the database
-            $query = "INSERT INTO users (name, email, password_hash)
+            $query = "INSERT INTO users (`name`, `email`, `password_hash`)
             VALUES(?,?,?)";
-            $values = [$inputs["name"], $inputs["email"], $passwordHash];
+            $values = [$fieldsData["name"], $fieldsData["email"], $passwordHash];
             executeQuery($pdo, $query, $values);
 
             // Prepare a positive response
@@ -37,8 +42,10 @@ function createUser (array $inputs): array {
                 "status" => true,
                 "message" => "User has been created",
             ];
+
         }
     }
+    
     http_response_code($statusCode);
     return $responseData;
 }

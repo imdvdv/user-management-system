@@ -11,11 +11,8 @@ function userController (string $method) {
 
             if (isset($_POST["name"], $_POST["email"])) {
 
-                $inputs = [
-                    "name" => trim(removeExtraSpaces($_POST["name"])),
-                    "email" => trim($_POST["email"]),
-                ];
-                echo json_encode(createUser($inputs)); // add new user to the database
+                $inputData = $_POST;
+                echo json_encode(createUser($inputData)); // add new user to the database
 
             } else {
                 header("HTTP/1.1 400 Bad Request");
@@ -47,11 +44,7 @@ function userController (string $method) {
 
                 if (isset($inputData->name, $inputData->email)) {
 
-                    $inputs = [
-                        "name" => trim(removeExtraSpaces($inputData->name)),
-                        "email" => trim($inputData->email),
-                    ];
-                    echo json_encode(updateUser($userID, $inputs)); // update user data in the database
+                    echo json_encode(updateUser($userID, $inputData)); // update user data in the database
 
                 } else {
                     header("HTTP/1.1 400 Bad Request");
