@@ -1,7 +1,7 @@
 <?php
 
 // The function for updating user data on the profile page
-function updateUser (int $userID, array|object $inputData): array {
+function updateUser (int $userID, array $inputData): array {
 
     // Check user exists
     $result = getUsers($userID);

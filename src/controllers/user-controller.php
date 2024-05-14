@@ -40,7 +40,7 @@ function userController (string $method) {
             if (isset($urlParts[1]) && is_numeric($urlParts[1])) {
 
                 $userID = $urlParts[1];
-                $inputData = json_decode(file_get_contents("php://input"));
+                $inputData = json_decode(file_get_contents("php://input"), true);
 
                 if (isset($inputData->name, $inputData->email)) {
 

@@ -1,6 +1,6 @@
 <?php
 
-function createUser (array|object $inputData): array {
+function createUser (array $inputData): array {
 
     // Prepare a preliminary negative response in case of errors
     $statusCode = 400;
