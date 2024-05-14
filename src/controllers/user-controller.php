@@ -11,8 +11,7 @@ function userController (string $method) {
 
             if (isset($_POST["name"], $_POST["email"])) {
 
-                $inputData = $_POST;
-                echo json_encode(createUser($inputData)); // add new user to the database
+                echo json_encode(createUser($_POST)); // add new user to the database
 
             } else {
                 header("HTTP/1.1 400 Bad Request");
@@ -42,7 +41,7 @@ function userController (string $method) {
                 $userID = $urlParts[1];
                 $inputData = json_decode(file_get_contents("php://input"), true);
 
-                if (isset($inputData->name, $inputData->email)) {
+                if (isset($inputData["name"], $inputData["email"])) {
 
                     echo json_encode(updateUser($userID, $inputData)); // update user data in the database
 
