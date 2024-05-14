@@ -22,7 +22,7 @@ function updateUser (int $userID, array $inputData): array {
     // Validation fields
     $fieldsData = validateFields($inputData); // the function returns array includes prepared value and array of errors
 
-    if (isset($fieldsData["name"], $fieldsData["email"], $fieldsData["errors"]) && empty($fieldsData["errors"])) {
+    if (isset($fieldsData["name"], $fieldsData["email"]) && !isset($fieldsData["errors"]["email"], $fieldsData["errors"]["name"])) {
 
         // Update user data in the database
         $pdo = getPDO();
@@ -37,7 +37,7 @@ function updateUser (int $userID, array $inputData): array {
             "message" => "User (ID-$userID) was updated",
         ];
 
-    } else {
+    } elseif (isset($fieldsData["errors"])) {
 
         $responseData["errors"] = $fieldsData["errors"];
 
