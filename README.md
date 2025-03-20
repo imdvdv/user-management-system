@@ -2,22 +2,22 @@
 
 ### Project Overview
 
-The fullstack project that is an admin panel that allows you to perform CRUD operations on users.
-Implemented on REST architecture for communicating with the server at specified endpoints. The backend of the project is written in PHP, and the frontend in Javascript.
-The main goal of the project is to learn how to implement such functionality and understand how they work without using frameworks and third-party libraries.
+The project is an admin panel that allows performing CRUD operations on users.
+Implemented on the MVC architecture using a functional approach.
+The main goal of the project is to learn how to implement such functionality and understand how it works without using frameworks and third-party libraries.
 
 ### Features
 
-* __Create:__ Ability to add a new user to the database by entering his personal data in the form.
-* __Read:__ Ability to display user data from the database on a page in an intuitive table.
-* __Update:__ Ability to edit user data.
-* __Delete:__ Ability to remove a user from the database.
 * __Friendly URLs:__ .htaccess file provides simple and short URLs, sparing the project from file names in the address bar.
-* __Routing:__ Custom routing implemented using a functional approach using PHP.
-* __Search:__ Custom search bar allows you to find a user by ID email address or name and display it in a table.
-* __Pagination:__ Custom pagination implemented in Javascript that allows you to fill a table with data and split it into pages.
-* __Validation:__ Custom validation of input data before sending using JavaScript and additional validation on the server side. In case of errors, error messages are displayed each under its own field.
-* __Popup:__ Custom popup for displaying messages or forms that the function retrieves using fetch JS from the components directory.
+* __Routing:__ Implemented simple routing that checks routes, HTTP methods, and also calls the action of the specified controller and middleware.
+* __CRUD:__ The project implements operations with database for adding, editing, deleting and displaying users.
+* __Search:__ Search system allows you to find a user by ID, email address or name and display it in a table.
+* __Templating:__ Templating on PHP allowing to render pages and parts of content.
+* __Popup:__ Popup window for displaying messages or forms, implemented in the built-in templating.
+* __Pagination:__ Pagination, which allows you to extract users from the database in parts, dividing the data into pages, navigation through which is carried out by a convenient interface.
+* __Validation:__ Input validation system. In case of errors, error messages are displayed each under its own field.
+* __Logging:__ Error logging system where log files are automatically entered by creation date into the log folder.
+* __Autoload:__ Autoloading files with composer allows you to take full advantage of namespaces.
 
 ### Components
 
@@ -35,34 +35,48 @@ __External Resources/Plugins__
 * Font awesome-6.4.0
 * Google Fonts
 
-
 ### Getting Started
 
 To use this project, follow these steps:
 1. Clone the repository to your local machine.
-2. Create a new database and import the database.sql file.
-3. Configure Database.
+2. Set the base URL of your project in the `config/settings.php`.
+```php
+const BASE_URL = 'YOUR_BASE_URL'; // http://localhost (for example)
+```
+3. Configure Database. 
 
    3.1 Create a new database with name `ums` and import the prepared dump file `config/ums.sql`.
    
-   3.2 Edit the database connection details in the `config/env.php` file.
-
+   3.2 Edit the database connection details in the `config/settings.php` file.
    ```php
-    // Database params
-   const DB_HOST = "your DB Host", 
-       DB_NAME = "your DB Name", // "ums" if you decide to use the database dump attached to the project
-       DB_USERNAME = "your DB UserName", 
-       DB_PASSWORD = "your DB Password", 
-       DB_PORT = "your DB Port", // usually 3306
-       DB_CHARSET = "utf8",
-       DB_OPTIONS = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];
+    const DB_SETTINGS = [
+        'driver' => 'mysql',
+        'host' => 'your_host',
+        'db_name' => 'your_db_name', // ums
+        'username' => 'your_username',
+        'password' => 'your_password',
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'port' => 'your_port', // 3306
+        'prefix' => '',
+        'options' => [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ],
+    ];
    ```
-
-4. Run the project on a server.
+4. Install [Composer](https://getcomposer.org/) if you haven't already and run the following command in the project root using terminal.
+```powershell
+composer dump-autoload
+```
+5. Run the project on a server.
 
 ### Images
 
-![Admin panel1](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/panel1.png)
-![Admin panel2](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/panel2.png)
-![Edit user popup](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/edit-popup.png)
-![Delete user popup](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/delete-popup.png)
+![Users panel page №1](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/preview/users1.png)
+![Users panel page №2](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/preview/users2.png)
+![Search user popup](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/preview/search-popup.png)
+![Add user popup](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/preview/add-popup1.png)
+![Add user popup with error](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/preview/add-popup2.png)
+![Edit user popup](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/preview/edit-popup.png)
+![Delete user popup](https://github.com/imdvdv/user-management-system/blob/main/public/assets/img/preview/delete-popup.png)

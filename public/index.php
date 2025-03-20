@@ -1,28 +1,12 @@
 <?php
 
-include_once __DIR__ . "/../config/includes.php";
+declare(strict_types=1);
 
-// Home page
-setRoute("/", function () {
+require_once __DIR__ . '/../config/settings.php';
+require_once CONFIG . '/init.php';
+require_once ROOT . '/vendor/autoload.php';
 
-    $method = $_SERVER["REQUEST_METHOD"];
-    homeController($method);
+use core\router;
 
-});
+router\routing();
 
-// Endpoint for CRUD operations with users
-setRoute("/users", function () {
-
-    $method = $_SERVER["REQUEST_METHOD"];
-    userController($method);
-    
-});
-
-// Not Found
-setRoute("/404", function () {
-
-    openErrorPage();
-
-});
-
-routing();
