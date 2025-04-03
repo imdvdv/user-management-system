@@ -6,8 +6,12 @@ use core\model;
 use core\validation;
 
 const PARAMS_CONDITIONS = [
-    'hash' => 'password_hash = :hash',
-    'name' => "(name = :name OR name LIKE CONCAT(:name, ' %') OR name LIKE CONCAT('% ', :name) OR name LIKE CONCAT('% ', :name, ' %'))",
+    'where' => [
+        'name' => "(name = :name OR name LIKE CONCAT(:name, ' %') OR name LIKE CONCAT('% ', :name) OR name LIKE CONCAT('% ', :name, ' %'))",
+    ],
+    'set' => [
+        'hash' => 'password_hash = :hash',
+    ]
 ];
 
 const LABELS = [
@@ -88,7 +92,7 @@ function count_columns(array $params = []): mixed
     $limit = isset($params['id']) || isset($params['email']) ? 'LIMIT 1' : '';
 
     foreach (array_keys($params) as $key) {
-        $where[] = PARAMS_CONDITIONS[$key] ?? "$key = :$key";
+        $where[] = PARAMS_CONDITIONS['where'][$key] ?? "$key = :$key";
     }
 
     $where = isset($where) && !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
@@ -108,7 +112,7 @@ function get_all(array $params = []): ?array
     $limit = isset($params['id']) || isset($params['email']) ? 'LIMIT 1' : '';
 
     foreach (array_keys($params) as $key) {
-        $where[] = PARAMS_CONDITIONS[$key] ?? "$key = :$key";
+        $where[] = PARAMS_CONDITIONS['where'][$key] ?? "$key = :$key";
     }
 
     $where = isset($where) && !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
@@ -119,7 +123,7 @@ function get_all(array $params = []): ?array
 function get_with_offset(int $limit, int $offset, array $params = []): ?array
 {
     foreach (array_keys($params) as $key) {
-        $where[] = PARAMS_CONDITIONS[$key] ?? "$key = :$key";
+        $where[] = PARAMS_CONDITIONS['where'][$key] ?? "$key = :$key";
     }
 
     $where = isset($where) && !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
@@ -148,7 +152,7 @@ function get_by_name(string $name): ?array
 function update_by_id(array $params): bool
 {
     foreach (array_keys($params) as $key) {
-        $set[] = PARAMS_CONDITIONS[$key] ?? "$key = :$key";
+        $set[] = PARAMS_CONDITIONS['set'][$key] ?? "$key = :$key";
     }
 
     $set = isset($set) && !empty($set) ? implode(', ', $set) : '';
