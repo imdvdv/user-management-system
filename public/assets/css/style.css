@@ -336,29 +336,6 @@ body{
     text-decoration: underline;
 }
 
-.profile__link{
-    display: inline-block;
-    background-color: white;
-    color: #4070f4;
-    cursor: pointer;
-    font-size: 15px;
-    margin-bottom: 15px;
-    transition: all 0.2s ease;
-}
-
-.profile__link:hover{
-    color: #0034e0;
-}
-
-.profile__link_delete-profile{
-    color: #d93025;
-    margin-bottom: 0;
-}
-
-.profile__link_delete-profile:hover{
-    color: #ff261a;
-}
-
 .popup{
     position: fixed;
     width: 100%;
@@ -439,13 +416,6 @@ body{
     background-color: #4070f4;
     cursor: pointer;
     transition: 0.3s;
-}
-
-.top-panel__button_search-bar{
-    height: 30px;
-    min-width: 31px;
-    margin: 0 3px;
-    font-size: 13px;
 }
 
 .button:hover{
