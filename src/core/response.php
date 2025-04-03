@@ -23,8 +23,9 @@ function get_body(?string $key = null): array
     if (!is_null($key) && has_body_key($key)) {
         $result = $_SESSION['response'][$key] ?? [];
         unset($_SESSION['response'][$key]);
+    } else {
+        $result = session\get('response', true, []);
     }
-    $result = session\get('response', true, []);
     return $result;
 }
 
